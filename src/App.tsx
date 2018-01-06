@@ -5,11 +5,12 @@ import { createStore } from 'redux';
 
 import './App.css';
 import { Globis } from './components/Globis';
+import todoApp from './reducers/index';
 
 const logo = require('./logo.svg');
 
 class App extends React.Component {
-  store = createStore();
+  store = createStore(todoApp);
 
   render() {
     return (

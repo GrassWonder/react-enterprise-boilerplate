@@ -8,8 +8,12 @@ interface GithubState {
   members: Member[];
 }
 
+const initialState: GithubState = {
+  members: []
+};
+
 export const githubReducer: Reducer<GithubState> = (
-  state: GithubState,
+  state: GithubState = initialState,
   action: SetMembersAction,
 ) => {
   switch (action.type) {
