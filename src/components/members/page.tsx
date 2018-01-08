@@ -1,26 +1,17 @@
 import * as React from 'react';
-import { memberAPI } from '../../api/member';
 import { MemberEntity } from '../../models';
 import { MemberHeader } from './memberHeader';
 import { MemberRow } from './memberRow';
 
 interface MembersPageProps {
-}
-interface MembersPageState {
   members: MemberEntity[];
+  fetchMembers(): void;
 }
-export class MembersPage extends React.Component<MembersPageProps, MembersPageState> {
-  constructor(props: MembersPageProps) {
-    super(props);
-    this.state = { members: [] };
-  }
+
+export class MembersPage extends React.Component<MembersPageProps, {}> {
 
   public componentDidMount() {
-    // memberAPI.fetchMembers()
-    memberAPI.fetchMembersAsync()
-      .then((members) => {
-          this.setState({ members });
-        });
+    this.props.fetchMembers();
   }
 
   public render() {
@@ -33,7 +24,7 @@ export class MembersPage extends React.Component<MembersPageProps, MembersPageSt
         </thead>
           <tbody>
           {
-            this.state.members.map((member) =>
+            this.props.members.map((member) =>
               <MemberRow
                 key={member.id}
                 member={member}

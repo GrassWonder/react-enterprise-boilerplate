@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 // import { Globis } from './components/Globis';
-import { MembersPage } from './components/members';
+import { MembersPageContainer } from './components/members';
 // import todoApp from './reducers/index';
 
 const logo = require('./logo.svg');
@@ -22,7 +22,7 @@ class App extends React.Component {
         </div>
         <BrowserRouter>
           {/*<Route path="/globis" component={Globis} />*/}
-          <Route path="/members" component={MembersPage} />
+          <Route path="/members" component={MembersPageContainer} />
         </BrowserRouter>
       </div>
     );
