@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 
 import './App.css';
-import { Globis } from './components/Globis';
-import todoApp from './reducers/index';
+// import { Globis } from './components/Globis';
+import { MembersPage } from './components/members';
+// import todoApp from './reducers/index';
 
 const logo = require('./logo.svg');
 
 class App extends React.Component {
-  store = createStore(todoApp);
+  // store = createStore(todoApp);
 
   render() {
     return (
@@ -20,7 +21,8 @@ class App extends React.Component {
           <h2>Welcome to React</h2>
         </div>
         <BrowserRouter>
-          <Route path="/globis" component={Globis} />
+          {/*<Route path="/globis" component={Globis} />*/}
+          <Route path="/members" component={MembersPage} />
         </BrowserRouter>
       </div>
     );
