@@ -32,10 +32,32 @@
 import { MemberEntity } from '../../models';
 import { members } from './mockData';
 
+const baseURL = 'https://api.github.com/orgs/globis-org';
+
 const fetchMembers = (): Promise<MemberEntity[]> => {
   return Promise.resolve(members);
 };
 
+const mapToMember = (githubMember: any): MemberEntity => {
+  return {
+    id: githubMember.id,
+    login: githubMember.login,
+    avatar_url: githubMember.avatar_url,
+  };
+};
+
+const mapToMembers = (githubMembers: any[]): MemberEntity[] => {
+  return githubMembers.map(mapToMember);
+};
+
+const fetchMembersAsync = (): Promise<MemberEntity[]> => {
+  const membersURL = `${baseURL}/members`;
+  return fetch(membersURL)
+    .then((response) => (response.json()))
+    .then(mapToMembers);
+};
+
 export const memberAPI = {
   fetchMembers,
+  fetchMembersAsync,
 };
